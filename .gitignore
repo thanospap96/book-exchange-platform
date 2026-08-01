@@ -1,13 +1,29 @@
+# Dependencies
 node_modules/
 backend/node_modules/
+frontend/node_modules/
+
+# Environment
 .env
+.env.*
+!.env.example
+
+# Build output
 dist/
 build/
+
+# Logs
 logs/
 *.log
-.vscode/
+
+# IDE / editors
 .idea/
+.vscode/
+*.iml
+
+# OS
 .DS_Store
 Thumbs.db
-coverage/
 
+# Coverage
+coverage/
