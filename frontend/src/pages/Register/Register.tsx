@@ -59,7 +59,7 @@ const Register: React.FC = () => {
               to="/login"
               className="font-medium text-cf-dark-red hover:text-red-700"
             >
-              sign in to your existing account
+              Sign in to your existing account
             </Link>
           </p>
         </div>
@@ -96,23 +96,23 @@ const Register: React.FC = () => {
               />
             </div>
 
-            <Input
-              label="Username"
-              autoComplete="username"
-              placeholder="johndoe"
-              error={errors.username?.message}
-              {...register('username', {
-                required: 'Username is required',
-                minLength: {
-                  value: 3,
-                  message: 'Username must be at least 3 characters',
-                },
-                pattern: {
-                  value: /^[a-zA-Z0-9_]+$/,
-                  message: 'Username can only contain letters, numbers, and underscores',
-                },
-              })}
-            />
+            {/*<Input*/}
+            {/*  label="Username"*/}
+            {/*  autoComplete="username"*/}
+            {/*  placeholder="johndoe"*/}
+            {/*  error={errors.username?.message}*/}
+            {/*  {...register('username', {*/}
+            {/*    required: 'Username is required',*/}
+            {/*    minLength: {*/}
+            {/*      value: 3,*/}
+            {/*      message: 'Username must be at least 3 characters',*/}
+            {/*    },*/}
+            {/*    pattern: {*/}
+            {/*      value: /^[a-zA-Z0-9_]+$/,*/}
+            {/*      message: 'Username can only contain letters, numbers, and underscores',*/}
+            {/*    },*/}
+            {/*  })}*/}
+            {/*/>*/}
 
             <Input
               label="Email address"
@@ -157,6 +157,21 @@ const Register: React.FC = () => {
               })}
             />
           </div>
+
+          <Input
+              label="Enter your location"
+              type="text"
+              placeholder="Location"
+              error={errors.location?.message}
+              {...register('location', {
+                required: 'Please enter location',
+                minLength: {
+                  value: 2,
+                  message: 'Please enter location',
+                }
+              })}
+              required
+          />
 
           <div className="flex items-center">
             <input

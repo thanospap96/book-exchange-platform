@@ -1,5 +1,5 @@
 import React from 'react';
-import { Message as MessageType } from '../../../types/exchange';
+import type {Message as MessageType} from '../../../types/exchange';
 import { cn } from '../../../utils/cn';
 
 interface MessageProps {
@@ -13,20 +13,20 @@ const Message: React.FC<MessageProps> = ({ message, isOwn }) => {
     return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
 
-  const formatDate = (timestamp: string) => {
-    const date = new Date(timestamp);
-    const today = new Date();
-    const yesterday = new Date(today);
-    yesterday.setDate(yesterday.getDate() - 1);
-
-    if (date.toDateString() === today.toDateString()) {
-      return 'Today';
-    } else if (date.toDateString() === yesterday.toDateString()) {
-      return 'Yesterday';
-    } else {
-      return date.toLocaleDateString();
-    }
-  };
+  // const formatDate = (timestamp: string) => {
+  //   const date = new Date(timestamp);
+  //   const today = new Date();
+  //   const yesterday = new Date(today);
+  //   yesterday.setDate(yesterday.getDate() - 1);
+  //
+  //   if (date.toDateString() === today.toDateString()) {
+  //     return 'Today';
+  //   } else if (date.toDateString() === yesterday.toDateString()) {
+  //     return 'Yesterday';
+  //   } else {
+  //     return date.toLocaleDateString();
+  //   }
+  // };
 
   return (
     <div className={cn('flex', isOwn ? 'justify-end' : 'justify-start')}>

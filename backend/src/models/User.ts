@@ -2,8 +2,9 @@ import mongoose, { Document, Schema } from 'mongoose';
 import bcrypt from 'bcryptjs';
 
 export interface IUser extends Document {
-    firsltName: string;
+    firstName: string;
     lastName: string;
+    email: string;
     password: string;
     location: string;
     rating: number;

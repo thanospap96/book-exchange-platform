@@ -5,12 +5,14 @@ import jwt from "jsonwebtoken";
 const JWT_SECRET = process.env.JWT_SECRET || "your_super_secret_jwt_key_here"
 
 export const registerUser = async (
-    username: string,
+    firstName: string,
+    lastName: string,
     email: string,
-    password: string
+    password: string,
+    location: string,
 ): Promise<IUser> => {
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({username, email, password: hashedPassword});
+    const user = new User({firstName, lastName, email, password: hashedPassword, location});
     return user.save();
 }
 

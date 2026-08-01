@@ -1,10 +1,10 @@
 import { apiClient } from './api';
-import type { 
-  LoginCredentials, 
-  RegisterData, 
-  AuthResponse, 
-  User, 
-  UpdateProfileData 
+import type {
+  LoginCredentials,
+  RegisterData,
+  AuthResponse,
+  User,
+  UpdateProfileData
 } from '../types/user';
 
 class AuthService {
@@ -12,6 +12,7 @@ class AuthService {
     const response = await apiClient.post<AuthResponse>('/auth/login', credentials);
     if (response.success && response.data) {
       apiClient.setToken(response.data.token);
+      localStorage.setItem('token', response.data.token);
       return response.data;
     }
     throw new Error(response.message || 'Login failed');
@@ -21,6 +22,7 @@ class AuthService {
     const response = await apiClient.post<AuthResponse>('/auth/register', userData);
     if (response.success && response.data) {
       apiClient.setToken(response.data.token);
+      localStorage.setItem('token', response.data.token);
       return response.data;
     }
     throw new Error(response.message || 'Registration failed');
@@ -46,7 +48,7 @@ class AuthService {
 
   async updateProfile(userData: UpdateProfileData): Promise<User> {
     const formData = new FormData();
-    
+
     Object.entries(userData).forEach(([key, value]) => {
       if (value !== undefined) {
         formData.append(key, value);

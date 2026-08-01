@@ -1,13 +1,26 @@
 import Joi from 'joi';
 
 export const registerSchema = Joi.object({
-    username: Joi.string().alphanum().min(3).max(30).required()
-        .messages({
-            'string.alphanum': 'Username must only contain alphanumeric characters',
-            'string.min': 'Username must be at least 3 characters long',
-            'string.max': 'Username cannot exceed 30 characters',
-            'any.required': 'Username is required'
+    firstName: Joi.string().min(2).max(50).required()
+        .messages({'string.alphanum': 'First name must only contain alphanumeric characters',
+            'string.min': 'First name must be at least 3 characters long',
+            'string.max': 'First name cannot exceed 30 characters',
+            'any.required': 'First name is required'
         }),
+    lastName: Joi.string().min(2).max(50).required()
+        .messages({
+            'string.alphanum': 'Last name must only contain alphanumeric characters',
+            'string.min': 'Last name must be at least 3 characters long',
+            'string.max': 'Last name cannot exceed 30 characters',
+            'any.required': 'Last name is required'
+        }),
+    // username: Joi.string().alphanum().min(3).max(30).required()
+    //     .messages({
+    //         'string.alphanum': 'Username must only contain alphanumeric characters',
+    //         'string.min': 'Username must be at least 3 characters long',
+    //         'string.max': 'Username cannot exceed 30 characters',
+    //         'any.required': 'Username is required'
+    //     }),
     email: Joi.string().email().required()
         .messages({
             'string.email': 'Please provide a valid email address',
@@ -23,6 +36,14 @@ export const registerSchema = Joi.object({
             'any.required': 'Location is required'
         })
 });
+
+// export const registerSchema = Joi.object({
+//     firstName: Joi.string().min(2).max(50).required(),
+//     lastName: Joi.string().min(2).max(50).required(),
+//     email: Joi.string().email().required(),
+//     password: Joi.string().min(6).required(),
+//     location: Joi.string().min(2).required(),
+// });
 
 export const loginSchema = Joi.object({
     email: Joi.string().email().required(),
